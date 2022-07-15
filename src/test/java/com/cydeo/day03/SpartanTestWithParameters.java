@@ -1,5 +1,6 @@
 package com.cydeo.day03;
 
+import com.cydeo.utilities.SpartanTestBase;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -14,14 +15,8 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class SpartanTestWithParameters {
+public class SpartanTestWithParameters extends SpartanTestBase {
 
-    @BeforeAll
-    public static void init(){
-
-        RestAssured.baseURI = "http://52.90.200.128:8000";
-
-    }
 
     @DisplayName("Get request to /api/spartans/{id}, id with 5")
     @Test
