@@ -14,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class OrdsTestWithParameters extends HRTestBase {
 
 
-
     @DisplayName("Get request to /countries with Query param")
     @Test
     public void Test1() {
