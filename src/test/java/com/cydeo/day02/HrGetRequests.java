@@ -12,7 +12,7 @@ import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class HrFetRequests {
+public class HrGetRequests {
 
     @BeforeAll
     public static void init(){
