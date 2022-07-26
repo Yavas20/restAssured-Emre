@@ -98,20 +98,59 @@ public class SpartanWithAuthTests extends SpartanAuthBase {
 
         given().auth().basic("admin", "admin")
                 .contentType(ContentType.JSON)
-                .pathParam("id", 111)
+                .pathParam("id", 138)
                 .when().delete("api/spartans/{id}")
                 .then().statusCode(204);
 
         given().auth().basic("user", "user")
                 .accept(ContentType.JSON)
-                .pathParam("id", 111)
+                .pathParam("id", 138)
                 .when().get("/api/spartans/{id}")
                 .then().statusCode(404);
+
+        given().auth().basic("user", "user")
+                .accept(ContentType.JSON)
+                .pathParam("id", 139)
+                .when().get("/api/spartans/{id}")
+                .then().statusCode(200).log().body();
+
+
+        Map<String, Object> mapSpartan3 = new LinkedHashMap<>();
+        mapSpartan3.put("name", "Latife");
+
+        given().auth().basic("editor", "editor")
+                .contentType(ContentType.JSON).body(mapSpartan3)
+                .pathParam("id", 102)
+                .when().patch("/api/spartans/{id}")
+                .then().statusCode(204);
+
+        Map<String, Object> mapSpartan4 = new LinkedHashMap<>();
+        mapSpartan4.put("name", "Betul");
+        mapSpartan4.put("gender", "Female");
+        mapSpartan4.put("phone", 5555555555l);
+
+        given().auth().basic("editor", "editor").contentType(ContentType.JSON)
+                .body(mapSpartan4).pathParam("id", 102)
+                .when().put("/api/spartans/{id}")
+                .then().statusCode(204);
+
+
 
 
     }
 }
 /*
+
+Map<String , Object> mapSpartan3 = new LinkedHashMap<>();
+        mapSpartan.put("name", "ZEynep");
+        mapSpartan.put("gender", "Female");
+        mapSpartan.put("phone", 3333333333l);
+
+        given().auth().basic("editor", "editor")
+                .contentType(ContentType.JSON)
+                .body(mapSpartan3).pathParam("id", 102)
+                .when().put("/api/spartans/{id}")
+                .then().statusCode(204);
  given().auth().basic("editor", "editor")
                 .accept(ContentType.JSON).and().contentType(ContentType.JSON)
                 .pathParam("id", 103)
